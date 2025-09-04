@@ -1,29 +1,11 @@
-# Core
-pandas>=2.2
-numpy>=1.26
-pydantic>=2.6
-python-dotenv>=1.0
-typer>=0.12
-# Web & APIs
 fastapi>=0.111
 uvicorn[standard]>=0.29
-# ML & LLM
-scikit-learn>=1.4
-xgboost>=2.0
-mlflow>=2.13
-# RAG & Vector
-langchain>=0.2
-llama-index>=0.11
-sentence-transformers>=3.0
-faiss-cpu>=1.8
-pgvector>=0.2.5
+pydantic>=2.6
 SQLAlchemy>=2.0
 psycopg2-binary>=2.9
-# Monitoring
+faiss-cpu>=1.8
+mlflow>=2.13
 evidently>=0.4.27
-# Testing & Dev
+langchain>=0.2
+llama-index>=0.11
 pytest>=8.2
-pre-commit>=3.7
-black>=24.4
-isort>=5.13
-mypy>=1.10

@@ -7,9 +7,7 @@ dist/
 build/
 *.egg-info/
 .DS_Store
-.idea/
-.vscode/
-data/**
-!data/.gitkeep
-.coverage
+.data/
+coverage/
 htmlcov/
+.idea

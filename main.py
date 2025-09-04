@@ -1,14 +1,8 @@
-# Minimal CLI with only stdlib deps
-import argparse, json
-from src.pipeline import healthcheck, example_task
-
-def main():
-    parser = argparse.ArgumentParser(description="Project CLI")
-    parser.add_argument("--sum", nargs="*", type=float, default=[], help="Numbers to sum")
-    args = parser.parse_args()
-    payload = {f"x{i}": v for i, v in enumerate(args.sum)}
-    result = example_task(payload)
-    print(json.dumps({"health": healthcheck(), "result": result}))
+import json, sys
+sys.path.insert(0, "src")
+from kyc_agent_factory.orchestrator import Orchestrator
 
 if __name__ == "__main__":
-    main()
+    orch = Orchestrator()
+    cid = orch.create_case("Alice Example", [{"type":"passport","number":"X123"}])
+    print(json.dumps(orch.run_case(cid), indent=2))

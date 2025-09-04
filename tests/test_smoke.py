@@ -1,9 +1,14 @@
-from src.pipeline import healthcheck, example_task
+import sys
+sys.path.insert(0, "src")
+from kyc_agent_factory.orchestrator import Orchestrator
 
-def test_health():
-    assert healthcheck()["status"] == "ok"
-
-def test_example_task():
-    out = example_task({"a": 1, "b": 2.5, "c": "ignore"})
-    assert out["numeric_total"] == 3.5
-    assert set(out["input_keys"]) == {"a", "b", "c"}
+def test_end_to_end_pipeline():
+    orch = Orchestrator()
+    cid = orch.create_case("Alice Example", [{"type":"passport","number":"X123"}])
+    out = orch.run_case(cid)
+    assert out["case_id"] == cid
+    assert out["risk"]["band"] in ("LOW", "MEDIUM", "HIGH")
+    c = orch.get_case(cid)
+    assert c["status"] == "processed"
+    audit = orch.get_audit(cid)
+    assert len(audit["events"]) >= 4
