@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fin-doc-rag-kg"
+version = "0.1.0"
+description = "Financial Document RAG + Knowledge Graph"
+authors = [{name = "Your Name", email = "you@example.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["fin_doc_rag_kg*"]
